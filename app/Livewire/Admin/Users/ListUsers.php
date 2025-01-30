@@ -12,8 +12,49 @@ class ListUsers extends Component
 
     public $state = [];
 
+    public $user;
+
+    public $showEditModal = false;
+
+    public function edit(User $user)
+    {
+        $this->reset();
+
+        $this->showEditModal = true;
+
+        $this->user = $user;
+
+        $this->state = $user->toArray();
+
+        $this->dispatch('show-form');
+    }
+    public function updateUser()
+    {
+        $validatedData = Validator::make($this->state, [
+            'name' => 'required',
+            'email' => 'required|email|unique:users,email,'.$this->user->id,
+            'password' => 'sometimes|confirmed',
+        ])->validate();
+
+        if (! empty($validatedData['password'])) {
+            $validatedData['password'] = bcrypt($validatedData['password']);
+        }
+
+        // if ($this->photo) {
+        //     Storage::disk('avatars')->delete($this->user->avatar);
+        //     $validatedData['avatar'] = $this->photo->store('/', 'avatars');
+        // }
+
+        $this->user->update($validatedData);
+
+        $this->dispatch('hide-form', ['message' => 'User updated successfully!']);
+    }
     public function addNewUser()
     {
+        $this->reset();
+
+        $this->showEditModal = false;
+
         $this->dispatch('show-form');
     }
     public function createUser()

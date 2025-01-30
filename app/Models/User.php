@@ -31,7 +31,24 @@ class User extends Authenticatable
     protected $hidden = [
         'password',
         'remember_token',
+        'email_verified_at',
+        'created_at',
+        'updated_at',
     ];
+
+    protected $appends = [
+        'avatar_url',
+    ];
+
+    public function getAvatarUrlAttribute()
+    {
+        if ($this->avatar && Storage::disk('avatars')->exists($this->avatar)) {
+            return Storage::disk('avatars')->url($this->avatar);
+        }
+
+        return asset('noimage.png');
+    }
+
 
     /**
      * The attributes that should be cast.

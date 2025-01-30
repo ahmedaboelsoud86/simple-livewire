@@ -35,27 +35,27 @@
                                     </thead>
                                     <tbody>
                                         @foreach ($users as $user)
-                                        <tr>
-                                            <td>{{ $loop->iteration }}</td>
-                                            <td>{{ $user->name }}</td>
-                                            <td>{{ $user->email }}</td>
-                                            <td>July 24, 1950</td>
-                                            <td>
-                                                <!-- Switch-->
-                                                <div>
-                                                    <input type="checkbox" id="switch01" checked
-                                                        data-switch="success" />
-                                                    <label for="switch01" data-on-label="Yes" data-off-label="No"
-                                                        class="mb-0 d-block"></label>
-                                                </div>
-                                            </td>
-                                            <td class="table-action">
-                                                <a href="javascript: void(0);" class="action-icon"> <i
-                                                        class="mdi mdi-pencil"></i></a>
-                                                <a href="javascript: void(0);" class="action-icon"> <i
-                                                        class="mdi mdi-delete"></i></a>
-                                            </td>
-                                        </tr>
+                                            <tr>
+                                                <td>{{ $loop->iteration }}</td>
+                                                <td>{{ $user->name }}</td>
+                                                <td>{{ $user->email }}</td>
+                                                <td>July 24, 1950</td>
+                                                <td>
+                                                    <!-- Switch-->
+                                                    <div>
+                                                        <input type="checkbox" id="switch01" checked
+                                                            data-switch="success" />
+                                                        <label for="switch01" data-on-label="Yes" data-off-label="No"
+                                                            class="mb-0 d-block"></label>
+                                                    </div>
+                                                </td>
+                                                <td class="table-action">
+                                                    <a href="" wire:click.prevent="edit( {{ $user }} )"
+                                                        class="action-icon"> <i class="mdi mdi-pencil"></i></a>
+                                                    <a href="javascript: void(0);" class="action-icon"> <i
+                                                            class="mdi mdi-delete"></i></a>
+                                                </td>
+                                            </tr>
                                         @endforeach
                                     </tbody>
                                 </table>
@@ -81,10 +81,11 @@
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Add New User</h5>
+                    <h5 class="modal-title" id="exampleModalLabel">{{ $showEditModal ? 'Edit User' : 'Add New User' }}
+                    </h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
-                <form autocomplete="off" wire:submit.prevet='createUser'>
+                <form autocomplete="off" wire:submit.prevent="{{ $showEditModal ? 'updateUser' : 'createUser' }}">
                     <div class="modal-body">
 
                         <div class="mb-3">
@@ -103,7 +104,7 @@
                                 <span class="text-danger">{{ $message }}<span>
                                     @enderror
                         </div>
-                        <div class="mb-3">
+                        <div class="mb-3" style="display: {{ $showEditModal ? 'none' : '' }};">
                             <label for="password" class="col-form-label">Password :</label>
                             <input type="password" wire:model.defer="state.password"
                                 class="form-control @error('password') is-invalid @enderror" id="password">
@@ -111,7 +112,7 @@
                                 <span class="text-danger">{{ $message }}<span>
                                     @enderror
                         </div>
-                        <div class="mb-3">
+                        <div class="mb-3" style="display: {{ $showEditModal ? 'none' : '' }};">
                             <label for="password_confirmation" class="col-form-label">C-Password :</label>
                             <input type="password" wire:model.defer="state.password_confirmation"
                                 class="form-control @error('password_confirmation') is-invalid @enderror"
