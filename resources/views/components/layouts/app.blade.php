@@ -23,6 +23,9 @@
 
     <!-- Icons css -->
     <link href="{{ asset('assets/css/icons.min.css') }}" rel="stylesheet" type="text/css" />
+
+    <!-- Toastr css -->
+    <link href="{{ asset('assets/vendor/toastr/toastr.min.css') }}" rel="stylesheet" type="text/css" />
 </head>
 
 <body>
@@ -568,7 +571,8 @@
                     <li class="side-nav-title">Apps</li>
 
                     <li class="side-nav-item">
-                        <a href="{{ route('users') }}" class="side-nav-link {{ request()->is('users') ? 'active' : '' }}">
+                        <a href="{{ route('users') }}"
+                            class="side-nav-link {{ request()->is('users') ? 'active' : '' }}">
                             <i class="uil-user"></i>
                             <span> Users </span>
                         </a>
@@ -1243,8 +1247,7 @@
                                                 <span class="flex-shrink-0">
                                                     <span
                                                         class="bg-primary bg-gradient d-flex h-100 flex-column p-1 px-2">
-                                                        <span
-                                                            class="d-block p-1 bg-light-lighten rounded mb-1"></span>
+                                                        <span class="d-block p-1 bg-light-lighten rounded mb-1"></span>
                                                         <span
                                                             class="d-block border opacity-25 rounded border-3 w-100 mb-1"></span>
                                                         <span
@@ -1441,8 +1444,7 @@
                                 <div class="form-check sidebar-setting card-radio">
                                     <input class="form-check-input" type="radio" name="data-sidenav-size"
                                         id="leftbar-size-fullscreen" value="fullscreen">
-                                    <label class="form-check-label p-0 avatar-md w-100"
-                                        for="leftbar-size-fullscreen">
+                                    <label class="form-check-label p-0 avatar-md w-100" for="leftbar-size-fullscreen">
                                         <span class="d-flex h-100">
                                             <span class="flex-grow-1">
                                                 <span class="d-flex h-100 flex-column">
@@ -1504,19 +1506,24 @@
 
     <!-- App js -->
     <script src="{{ asset('assets/js/app.min.js') }}" type="text/javascript"></script>
-
+    <!-- Toastr js -->
+    <script src="{{ asset('assets/vendor/toastr/toastr.min.js') }}" type="text/javascript"></script>
 
     <script>
+        //  jQuery(document).ready(function() {
+        toastr.options = {
+            "progressBar": true,
+        }
         document.addEventListener('livewire:init', () => {
             Livewire.on('show-form', (event) => {
                 $('#form').modal('show');
             });
             Livewire.on('hide-form', (event) => {
                 $('#form').modal('hide');
+                toastr.success(event[0].message, 'Success!');
             });
         });
+        // });
     </script>
-
 </body>
-
 </html>
