@@ -43,30 +43,39 @@
                                                 <td>
                                                     <!-- Switch-->
                                                     <div>
-                                                        <input type="checkbox" id="switch01" checked
+                                                        <input type="checkbox"
+                                                            wire:change.prevent='cahngeStatus({{ $user }})'
+                                                            id="switch{{ $user->id }}"
+                                                            {{ $user->status ? 'checked' : '' }}
                                                             data-switch="success" />
-                                                        <label for="switch01" data-on-label="Yes" data-off-label="No"
-                                                            class="mb-0 d-block"></label>
+                                                        <label for="switch{{ $user->id }}" data-on-label="Yes"
+                                                            data-off-label="No" class="mb-0 d-block"></label>
                                                     </div>
                                                 </td>
                                                 <td class="table-action">
                                                     <a href="" wire:click.prevent="edit( {{ $user }} )"
                                                         class="action-icon"> <i class="mdi mdi-pencil"></i></a>
-                                                    <a href="javascript: void(0);" class="action-icon"> <i
-                                                            class="mdi mdi-delete"></i></a>
+                                                    <a href=""
+                                                        wire:click.prevent="confirmUserRemoval({{ $user->id }})"
+                                                        class="action-icon"> <i class="mdi mdi-delete"></i></a>
                                                 </td>
                                             </tr>
                                         @endforeach
                                     </tbody>
                                 </table>
+
                             </div> <!-- end table-responsive-->
+
                         </div> <!-- end preview-->
-
-
                     </div> <!-- end tab-content-->
 
                 </div> <!-- end card body-->
+                <div class="card-footer">
+                    {{ $users->links() }}
+                </div>
+
             </div> <!-- end card -->
+
         </div><!-- end col-->
 
 
@@ -132,5 +141,29 @@
         </div>
     </div>
     <!-- End Modal -->
+
+
+    <!-- DeleteModel-->
+    <div class="modal fade" id="confirmationModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+        aria-hidden="true" wire:ignore.self>
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5>Delete User</h5>
+                </div>
+
+                <div class="modal-body">
+                    <h4>Are you sure you want to delete this user?</h4>
+                </div>
+
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                    <button type="button" wire:click.prevent="deleteUser" class="btn btn-danger"><i
+                            class="fa fa-trash mr-1"></i>Delete User</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--End DeleteModel-->
 
 </div>

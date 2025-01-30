@@ -2,6 +2,9 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Livewire\Admin\Users\ListUsers;
+use App\Livewire\Admin\Products\ListProducts;
+use App\Livewire\Admin\Categories\ListCategories;
+
 
 
 /*
@@ -19,8 +22,19 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-
+// users
 Route::get('users', ListUsers::class)->name('users');
+
+// products
+Route::get('products', ListProducts::class)->name('products');
+
+
+
+// categories
+Route::get('categories', ListCategories::class)->name('categories');
+
+//Route::get('appointments/create', CreateAppointmentForm::class)->name('appointments.create');
+//Route::get('appointments/{appointment}/edit', UpdateAppointmentForm::class)->name('appointments.edit');
 
 // posts
 // Route::get('posts', PostList::class)->name('posts');

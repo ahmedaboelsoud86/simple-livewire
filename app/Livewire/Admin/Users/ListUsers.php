@@ -4,18 +4,42 @@ namespace App\Livewire\Admin\Users;
 
 use Livewire\Component;
 use Illuminate\Support\Facades\Validator;
+use Livewire\WithPagination;
 use App\Models\User;
 
 
 class ListUsers extends Component
 {
-
+    use WithPagination;
     public $state = [];
-
     public $user;
-
     public $showEditModal = false;
+    public $userIdBeingRemoved = null;
 
+    //public $status;
+
+    public function confirmUserRemoval($userId)
+    {
+        $this->userIdBeingRemoved = $userId;
+
+        $this->dispatch('show-delete-modal');
+    }
+
+    public function cahngeStatus(User $user)
+    {
+       $user->status = $user->status ? "0" : "1";
+       $user->save();
+       $this->dispatch('success', ['message' => 'Status changed successfully!']);
+
+    }
+    public function deleteUser()
+    {
+        $user = User::findOrFail($this->userIdBeingRemoved);
+
+        $user->delete();
+
+        $this->dispatch('hide-delete-modal', ['message' => 'User deleted successfully!']);
+    }
     public function edit(User $user)
     {
         $this->reset();
@@ -79,7 +103,7 @@ class ListUsers extends Component
     }
     public function render()
     {
-        $users = User::latest()->paginate();
+        $users = User::latest()->paginate(2);
         return view('livewire.admin.users.list-users',[
             'users' => $users
         ]);

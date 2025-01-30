@@ -571,10 +571,24 @@
                     <li class="side-nav-title">Apps</li>
 
                     <li class="side-nav-item">
-                        <a href="{{ route('users') }}"
+                        <a  href="{{ route('users') }}"
                             class="side-nav-link {{ request()->is('users') ? 'active' : '' }}">
                             <i class="uil-user"></i>
                             <span> Users </span>
+                        </a>
+                    </li>
+                    <li class="side-nav-item">
+                        <a  href="{{ route('categories') }}"
+                            class="side-nav-link {{ request()->is('categories') ? 'active' : '' }}">
+                            <i class="uil-user"></i>
+                            <span> Categories </span>
+                        </a>
+                    </li>
+                    <li class="side-nav-item">
+                        <a  href="{{ route('products') }}"
+                            class="side-nav-link {{ request()->is('products') ? 'active' : '' }}">
+                            <i class="uil-user"></i>
+                            <span> Products </span>
                         </a>
                     </li>
 
@@ -1513,6 +1527,7 @@
         //  jQuery(document).ready(function() {
         toastr.options = {
             "progressBar": true,
+            "positionClass": "toast-bottom-right",
         }
         document.addEventListener('livewire:init', () => {
             Livewire.on('show-form', (event) => {
@@ -1522,6 +1537,21 @@
                 $('#form').modal('hide');
                 toastr.success(event[0].message, 'Success!');
             });
+            Livewire.on('show-delete-modal', (event) => {
+                $('#confirmationModal').modal('show');
+            });
+            Livewire.on('hide-delete-modal', (event) => {
+                toastr.success(event[0].message, 'Success!');
+                $('#confirmationModal').modal('hide');
+            });
+            Livewire.on('success', (event) => {
+                toastr.success(event[0].message, 'Success!');
+            });
+
+
+
+
+
         });
         // });
     </script>
