@@ -11,6 +11,9 @@ class ListProducts extends Component
     use WithPagination;
     public function render()
     {
-        return view('livewire.admin.products.list-products');
+        $products = Product::latest()->paginate(2); 
+        return view('livewire.admin.products.list-products',[
+            'products' => $products
+        ]);
     }
 }
