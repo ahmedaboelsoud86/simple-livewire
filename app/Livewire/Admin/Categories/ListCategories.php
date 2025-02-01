@@ -16,14 +16,25 @@ class ListCategories extends Component
     public $showEditModal = false;
     public $categoryIdBeingRemoved = null;
 
+    public $selectAll = false;
+
     protected $listeners = ["deletedCheckedItems"];
 
     public $checkCat = [];
+      
+    public function updatedSelectAll($value){
+        if($value){
+            $this->checkCat = Category::pluck('id');
+        }else{
+            $this->checkCat = [];
+        }
+    }
 
-    function deletedCheckedItems()
+    public function deletedCheckedItems()
     {
         Category::whereKey($this->checkCat)->delete();
         $this->checkCat = [];
+        $this->selectAll = false;
         $this->dispatch('hide-delete-modal', ['message' => 'Categoris deleted successfully!']);
     }
     public function deleteCategories()

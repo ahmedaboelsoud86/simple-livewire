@@ -29,7 +29,7 @@
                                     <thead>
                                         <tr>
                                             <th>#</th>
-                                            <th>#</th>
+                                            <th><input type="checkbox" wire:model.live="selectAll" ></th>
                                             <th>Name</th>
                                             <th>Option</th>
                                         </tr>
@@ -38,7 +38,7 @@
                                         @foreach ($categories as $category)
                                             <tr>
                                                 <td>{{ $loop->iteration }}</td>
-                                                <td><input type="checkbox" value="{{ $category->id}}" wire:model.live="checkCat" ></td>
+                                                <td><input type="checkbox" value="{{ $category->id}}" wire:model.live.defar="checkCat" ></td>
                                                 <td>{{ $category->name }}</td>
                                                 <td class="table-action">
                                                     <a href="" wire:click.prevent="edit( {{ $category }} )"
