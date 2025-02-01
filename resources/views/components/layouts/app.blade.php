@@ -151,8 +151,8 @@
 
                 <ul class="topbar-menu d-flex align-items-center gap-3">
                     <li class="dropdown d-lg-none">
-                        <a class="nav-link dropdown-toggle arrow-none" data-bs-toggle="dropdown" href="#"
-                            role="button" aria-haspopup="false" aria-expanded="false">
+                        <a class="nav-link dropdown-toggle arrow-none" data-bs-toggle="dropdown" href="#" role="button"
+                            aria-haspopup="false" aria-expanded="false">
                             <i class="ri-search-line font-22"></i>
                         </a>
                         <div class="dropdown-menu dropdown-menu-animated dropdown-lg p-0">
@@ -164,10 +164,10 @@
                     </li>
 
                     <li class="dropdown">
-                        <a class="nav-link dropdown-toggle arrow-none" data-bs-toggle="dropdown" href="#"
-                            role="button" aria-haspopup="false" aria-expanded="false">
-                            <img src="https://coderthemes.com/hyper/modern/assets/images/flags/us.jpg"
-                                alt="user-image" class="me-0 me-sm-1" height="12">
+                        <a class="nav-link dropdown-toggle arrow-none" data-bs-toggle="dropdown" href="#" role="button"
+                            aria-haspopup="false" aria-expanded="false">
+                            <img src="https://coderthemes.com/hyper/modern/assets/images/flags/us.jpg" alt="user-image"
+                                class="me-0 me-sm-1" height="12">
                             <span class="align-middle d-none d-lg-inline-block">English</span> <i
                                 class="mdi mdi-chevron-down d-none d-sm-inline-block align-middle"></i>
                         </a>
@@ -176,37 +176,33 @@
                             <!-- item-->
                             <a href="javascript:void(0);" class="dropdown-item">
                                 <img src="https://coderthemes.com/hyper/modern/assets/images/flags/germany.jpg"
-                                    alt="user-image" class="me-1" height="12"> <span
-                                    class="align-middle">German</span>
+                                    alt="user-image" class="me-1" height="12"> <span class="align-middle">German</span>
                             </a>
 
                             <!-- item-->
                             <a href="javascript:void(0);" class="dropdown-item">
                                 <img src="https://coderthemes.com/hyper/modern/assets/images/flags/italy.jpg"
-                                    alt="user-image" class="me-1" height="12"> <span
-                                    class="align-middle">Italian</span>
+                                    alt="user-image" class="me-1" height="12"> <span class="align-middle">Italian</span>
                             </a>
 
                             <!-- item-->
                             <a href="javascript:void(0);" class="dropdown-item">
                                 <img src="https://coderthemes.com/hyper/modern/assets/images/flags/spain.jpg"
-                                    alt="user-image" class="me-1" height="12"> <span
-                                    class="align-middle">Spanish</span>
+                                    alt="user-image" class="me-1" height="12"> <span class="align-middle">Spanish</span>
                             </a>
 
                             <!-- item-->
                             <a href="javascript:void(0);" class="dropdown-item">
                                 <img src="https://coderthemes.com/hyper/modern/assets/images/flags/russia.jpg"
-                                    alt="user-image" class="me-1" height="12"> <span
-                                    class="align-middle">Russian</span>
+                                    alt="user-image" class="me-1" height="12"> <span class="align-middle">Russian</span>
                             </a>
 
                         </div>
                     </li>
 
                     <li class="dropdown notification-list">
-                        <a class="nav-link dropdown-toggle arrow-none" data-bs-toggle="dropdown" href="#"
-                            role="button" aria-haspopup="false" aria-expanded="false">
+                        <a class="nav-link dropdown-toggle arrow-none" data-bs-toggle="dropdown" href="#" role="button"
+                            aria-haspopup="false" aria-expanded="false">
                             <i class="ri-notification-3-line font-22"></i>
                             <span class="noti-icon-badge"></span>
                         </a>
@@ -357,8 +353,8 @@
                     </li>
 
                     <li class="dropdown d-none d-sm-inline-block">
-                        <a class="nav-link dropdown-toggle arrow-none" data-bs-toggle="dropdown" href="#"
-                            role="button" aria-haspopup="false" aria-expanded="false">
+                        <a class="nav-link dropdown-toggle arrow-none" data-bs-toggle="dropdown" href="#" role="button"
+                            aria-haspopup="false" aria-expanded="false">
                             <i class="ri-apps-2-line font-22"></i>
                         </a>
                         <div class="dropdown-menu dropdown-menu-end dropdown-menu-animated dropdown-lg p-0">
@@ -437,8 +433,8 @@
                     </li>
 
                     <li class="dropdown">
-                        <a class="nav-link dropdown-toggle arrow-none nav-user px-2" data-bs-toggle="dropdown"
-                            href="#" role="button" aria-haspopup="false" aria-expanded="false">
+                        <a class="nav-link dropdown-toggle arrow-none nav-user px-2" data-bs-toggle="dropdown" href="#"
+                            role="button" aria-haspopup="false" aria-expanded="false">
                             <span class="account-user-avatar">
                                 <img src="https://coderthemes.com/hyper/modern/assets/images/users/avatar-1.jpg"
                                     alt="user-image" width="32" class="rounded-circle">
@@ -514,8 +510,7 @@
             </a>
 
             <!-- Sidebar Hover Menu Toggle Button -->
-            <div class="button-sm-hover" data-bs-toggle="tooltip" data-bs-placement="right"
-                title="Show Full Sidebar">
+            <div class="button-sm-hover" data-bs-toggle="tooltip" data-bs-placement="right" title="Show Full Sidebar">
                 <i class="ri-checkbox-blank-circle-line align-middle"></i>
             </div>
 
@@ -571,21 +566,21 @@
                     <li class="side-nav-title">Apps</li>
 
                     <li class="side-nav-item">
-                        <a  href="{{ route('users') }}"
+                        <a href="{{ route('users') }}"
                             class="side-nav-link {{ request()->is('users') ? 'active' : '' }}">
                             <i class="uil-user"></i>
                             <span> Users </span>
                         </a>
                     </li>
                     <li class="side-nav-item">
-                        <a  href="{{ route('categories') }}"
+                        <a href="{{ route('categories') }}"
                             class="side-nav-link {{ request()->is('categories') ? 'active' : '' }}">
                             <i class="uil-user"></i>
                             <span> Categories </span>
                         </a>
                     </li>
                     <li class="side-nav-item">
-                        <a  href="{{ route('products') }}"
+                        <a href="{{ route('products') }}"
                             class="side-nav-link {{ request()->is('products') ? 'active' : '' }}">
                             <i class="uil-user"></i>
                             <span> Products </span>
@@ -595,8 +590,8 @@
 
 
                     <li class="side-nav-item">
-                        <a data-bs-toggle="collapse" href="#sidebarCrm" aria-expanded="false"
-                            aria-controls="sidebarCrm" class="side-nav-link">
+                        <a data-bs-toggle="collapse" href="#sidebarCrm" aria-expanded="false" aria-controls="sidebarCrm"
+                            class="side-nav-link">
                             <i class="uil uil-tachometer-fast"></i>
                             <span class="badge bg-danger text-white float-end">New</span>
                             <span> CRM </span>
@@ -751,8 +746,7 @@
                                         <div id="sidebar-size">
                                             <span class="d-flex h-100">
                                                 <span class="flex-shrink-0">
-                                                    <span
-                                                        class="bg-light d-flex h-100 border-end flex-column p-1 px-2">
+                                                    <span class="bg-light d-flex h-100 border-end flex-column p-1 px-2">
                                                         <span class="d-block p-1 bg-dark-lighten rounded mb-1"></span>
                                                         <span
                                                             class="d-block border border-3 border-secondary border-opacity-25 rounded w-100 mb-1"></span>
@@ -861,8 +855,7 @@
                                         <div id="sidebar-size">
                                             <span class="d-flex h-100">
                                                 <span class="flex-shrink-0">
-                                                    <span
-                                                        class="bg-light d-flex h-100 border-end flex-column p-1 px-2">
+                                                    <span class="bg-light d-flex h-100 border-end flex-column p-1 px-2">
                                                         <span class="d-block p-1 bg-dark-lighten rounded mb-1"></span>
                                                         <span
                                                             class="d-block border border-3 border-secondary border-opacity-25 rounded w-100 mb-1"></span>
@@ -911,8 +904,7 @@
                                         <div id="sidebar-size" class="border-start border-end">
                                             <span class="d-flex h-100">
                                                 <span class="flex-shrink-0">
-                                                    <span
-                                                        class="bg-light d-flex h-100 border-end flex-column p-1 px-2">
+                                                    <span class="bg-light d-flex h-100 border-end flex-column p-1 px-2">
                                                         <span class="d-block p-1 bg-dark-lighten rounded mb-1"></span>
                                                         <span
                                                             class="d-block border border-3 border-secondary border-opacity-25 rounded w-100 mb-1"></span>
@@ -1404,8 +1396,7 @@
                                 <div class="form-check sidebar-setting card-radio">
                                     <input class="form-check-input" type="radio" name="data-sidenav-size"
                                         id="leftbar-size-small-hover" value="sm-hover">
-                                    <label class="form-check-label p-0 avatar-md w-100"
-                                        for="leftbar-size-small-hover">
+                                    <label class="form-check-label p-0 avatar-md w-100" for="leftbar-size-small-hover">
                                         <span class="d-flex h-100">
                                             <span class="flex-shrink-0">
                                                 <span class="bg-light d-flex h-100 border-end flex-column"
@@ -1477,8 +1468,8 @@
                         <h5 class="my-3 font-16 fw-bold">Layout Position</h5>
 
                         <div class="btn-group radio" role="group">
-                            <input type="radio" class="btn-check" name="data-layout-position"
-                                id="layout-position-fixed" value="fixed">
+                            <input type="radio" class="btn-check" name="data-layout-position" id="layout-position-fixed"
+                                value="fixed">
                             <label class="btn btn-soft-primary w-sm" for="layout-position-fixed">Fixed</label>
 
                             <input type="radio" class="btn-check" name="data-layout-position"
@@ -1523,6 +1514,10 @@
     <!-- Toastr js -->
     <script src="{{ asset('assets/vendor/toastr/toastr.min.js') }}" type="text/javascript"></script>
 
+    <!-- sweetalert2 -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+
     <script>
         //  jQuery(document).ready(function() {
         toastr.options = {
@@ -1547,6 +1542,26 @@
             Livewire.on('success', (event) => {
                 toastr.success(event[0].message, 'Success!');
             });
+            Livewire.on('delete-cats', (event) => {
+                Swal.fire({
+                    title: event[0].title,
+                    text:  event[0].html,
+                    icon: "warning",
+                    showCancelButton: true,
+                    confirmButtonColor: "#3085d6",
+                    cancelButtonColor: "#d33",
+                    confirmButtonText: "Yes, delete it!"
+                }).then((result) => {
+                    if (result.isConfirmed) {
+                        Livewire.dispatch("deletedCheckedItems");
+                        // Swal.fire({
+                        //     title: "Deleted!",
+                        //     text: "Your file has been deleted.",
+                        //     icon: "success"
+                        // });
+                    }
+                });
+            });
 
 
 
@@ -1556,4 +1571,5 @@
         // });
     </script>
 </body>
+
 </html>

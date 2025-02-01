@@ -16,6 +16,24 @@ class ListCategories extends Component
     public $showEditModal = false;
     public $categoryIdBeingRemoved = null;
 
+    protected $listeners = ["deletedCheckedItems"];
+
+    public $checkCat = [];
+
+    function deletedCheckedItems()
+    {
+        Category::whereKey($this->checkCat)->delete();
+        $this->checkCat = [];
+        $this->dispatch('hide-delete-modal', ['message' => 'Categoris deleted successfully!']);
+    }
+    public function deleteCategories()
+    {
+        $this->dispatch('delete-cats', [
+            'title' => "Are you sure ?",
+            'html'  => "You won't be able to revert this! Categories ",
+            'catIDS' => $this->checkCat
+        ]);
+    }
     public function confirmCategoryRemoval($categoryId)
     {
         $this->categoryIdBeingRemoved = $categoryId;
@@ -74,7 +92,7 @@ class ListCategories extends Component
     }
     public function render()
     {
-        $categories = Category::latest()->paginate(2);
+        $categories = Category::latest()->paginate();
         return view('livewire.admin.categories.list-categories',[
             'categories' => $categories
         ]);

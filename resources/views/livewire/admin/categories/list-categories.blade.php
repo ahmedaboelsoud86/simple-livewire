@@ -11,6 +11,9 @@
                 </div>
                 <h4 class="page-title">Categories</h4>
                 <button class="btn btn-primary" wire:click.prevent='addNewCategory'>Add New Category</button>
+                @if($checkCat)
+                     <button class="btn btn-danger" wire:click='deleteCategories()'>Selected ( {{count($checkCat)}} )</button>
+                @endif
             </div>
         </div>
     </div>
@@ -26,6 +29,7 @@
                                     <thead>
                                         <tr>
                                             <th>#</th>
+                                            <th>#</th>
                                             <th>Name</th>
                                             <th>Option</th>
                                         </tr>
@@ -34,6 +38,7 @@
                                         @foreach ($categories as $category)
                                             <tr>
                                                 <td>{{ $loop->iteration }}</td>
+                                                <td><input type="checkbox" value="{{ $category->id}}" wire:model.live="checkCat" ></td>
                                                 <td>{{ $category->name }}</td>
                                                 <td class="table-action">
                                                     <a href="" wire:click.prevent="edit( {{ $category }} )"
