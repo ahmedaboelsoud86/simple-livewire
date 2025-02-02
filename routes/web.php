@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Livewire\Admin\Users\ListUsers;
 use App\Livewire\Admin\Products\ListProducts;
 use App\Livewire\Admin\Products\CreateProductsForm;
+use App\Livewire\Admin\Products\UpdateProductForm;
 use App\Livewire\Admin\Categories\ListCategories;
 
 
@@ -29,6 +30,7 @@ Route::get('users', ListUsers::class)->name('users');
 // products
 Route::get('products', ListProducts::class)->name('products');
 Route::get('create-product', CreateProductsForm::class)->name('create.product');
+Route::get('product/{product}/edit', UpdateProductForm::class)->name('edit.product');
 
 
 

@@ -1515,8 +1515,6 @@
     <script src="{{ asset('assets/vendor/toastr/toastr.min.js') }}" type="text/javascript"></script>
 
     <!-- sweetalert2 -->
-    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-
 
     <script>
         //  jQuery(document).ready(function() {
@@ -1542,34 +1540,32 @@
             Livewire.on('success', (event) => {
                 toastr.success(event[0].message, 'Success!');
             });
-            Livewire.on('delete-cats', (event) => {
-                Swal.fire({
-                    title: event[0].title,
-                    text:  event[0].html,
-                    icon: "warning",
-                    showCancelButton: true,
-                    confirmButtonColor: "#3085d6",
-                    cancelButtonColor: "#d33",
-                    confirmButtonText: "Yes, delete it!"
-                }).then((result) => {
-                    if (result.isConfirmed) {
-                        Livewire.dispatch("deletedCheckedItems");
-                        // Swal.fire({
-                        //     title: "Deleted!",
-                        //     text: "Your file has been deleted.",
-                        //     icon: "success"
-                        // });
-                    }
-                });
-            });
-
-
-
+            // Livewire.on('delete-cats', (event) => {
+            //     Swal.fire({
+            //         title: event[0].title,
+            //         text:  event[0].html,
+            //         icon: "warning",
+            //         showCancelButton: true,
+            //         confirmButtonColor: "#3085d6",
+            //         cancelButtonColor: "#d33",
+            //         confirmButtonText: "Yes, delete it!"
+            //     }).then((result) => {
+            //         if (result.isConfirmed) {
+            //             Livewire.dispatch("deletedCheckedItems");
+            //             // Swal.fire({
+            //             //     title: "Deleted!",
+            //             //     text: "Your file has been deleted.",
+            //             //     icon: "success"
+            //             // });
+            //         }
+            //     });
+            // });
 
 
         });
         // });
     </script>
+    @stack('js')
 </body>
 
 </html>

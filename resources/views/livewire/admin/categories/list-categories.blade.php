@@ -11,8 +11,9 @@
                 </div>
                 <h4 class="page-title">Categories</h4>
                 <button class="btn btn-primary" wire:click.prevent='addNewCategory'>Add New Category</button>
-                @if($checkCat)
-                     <button class="btn btn-danger" wire:click='deleteCategories()'>Selected ( {{count($checkCat)}} )</button>
+                @if ($checkCat)
+                    <button class="btn btn-danger" wire:click='deleteCategories()'>Selected ( {{ count($checkCat) }}
+                        )</button>
                 @endif
             </div>
         </div>
@@ -29,7 +30,7 @@
                                     <thead>
                                         <tr>
                                             <th>#</th>
-                                            <th><input type="checkbox" wire:model.live="selectAll" ></th>
+                                            <th><input type="checkbox" wire:model.live="selectAll"></th>
                                             <th>Name</th>
                                             <th>Option</th>
                                         </tr>
@@ -38,7 +39,8 @@
                                         @foreach ($categories as $category)
                                             <tr>
                                                 <td>{{ $loop->iteration }}</td>
-                                                <td><input type="checkbox" value="{{ $category->id}}" wire:model.live.defar="checkCat" ></td>
+                                                <td><input type="checkbox" value="{{ $category->id }}"
+                                                        wire:model.live.defar="checkCat"></td>
                                                 <td>{{ $category->name }}</td>
                                                 <td class="table-action">
                                                     <a href="" wire:click.prevent="edit( {{ $category }} )"
@@ -78,11 +80,13 @@
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">{{ $showEditModal ? 'Edit Category' : 'Add New Category' }}
+                    <h5 class="modal-title" id="exampleModalLabel">
+                        {{ $showEditModal ? 'Edit Category' : 'Add New Category' }}
                     </h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
-                <form autocomplete="off" wire:submit.prevent="{{ $showEditModal ? 'updateCategory' : 'createCategory' }}">
+                <form autocomplete="off"
+                    wire:submit.prevent="{{ $showEditModal ? 'updateCategory' : 'createCategory' }}">
                     <div class="modal-body">
 
                         <div class="mb-3">
@@ -129,5 +133,7 @@
         </div>
     </div>
     <!--End DeleteModel-->
+
+    <x-confirmation-alert />
 
 </div>

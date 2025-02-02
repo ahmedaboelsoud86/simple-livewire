@@ -21,7 +21,7 @@ class ListCategories extends Component
     protected $listeners = ["deletedCheckedItems"];
 
     public $checkCat = [];
-      
+
     public function updatedSelectAll($value){
         if($value){
             $this->checkCat = Category::pluck('id');
@@ -39,7 +39,7 @@ class ListCategories extends Component
     }
     public function deleteCategories()
     {
-        $this->dispatch('delete-cats', [
+        $this->dispatch('confirm-alert-delete', [
             'title' => "Are you sure ?",
             'html'  => "You won't be able to revert this! Categories ",
             'catIDS' => $this->checkCat
