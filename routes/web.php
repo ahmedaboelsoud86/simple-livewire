@@ -24,18 +24,21 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+Route::group(['middleware' => 'auth'],function () {
+    Route::get('users', ListUsers::class)->name('users');
+
+    // products
+    Route::get('products', ListProducts::class)->name('products');
+    Route::get('create-product', CreateProductsForm::class)->name('create.product');
+    Route::get('product/{product}/edit', UpdateProductForm::class)->name('edit.product');
+
+
+
+    // categories
+    Route::get('categories', ListCategories::class)->name('categories');
+});
 // users
-Route::get('users', ListUsers::class)->name('users');
 
-// products
-Route::get('products', ListProducts::class)->name('products');
-Route::get('create-product', CreateProductsForm::class)->name('create.product');
-Route::get('product/{product}/edit', UpdateProductForm::class)->name('edit.product');
-
-
-
-// categories
-Route::get('categories', ListCategories::class)->name('categories');
 
 //Route::get('appointments/create', CreateAppointmentForm::class)->name('appointments.create');
 //Route::get('appointments/{appointment}/edit', UpdateAppointmentForm::class)->name('appointments.edit');

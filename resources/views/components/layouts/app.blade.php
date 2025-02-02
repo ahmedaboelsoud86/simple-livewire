@@ -26,6 +26,8 @@
 
     <!-- Toastr css -->
     <link href="{{ asset('assets/vendor/toastr/toastr.min.css') }}" rel="stylesheet" type="text/css" />
+
+{{-- <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.14.8/dist/cdn.min.js"></script> --}}
 </head>
 
 <body>
@@ -440,7 +442,7 @@
                                     alt="user-image" width="32" class="rounded-circle">
                             </span>
                             <span class="d-lg-flex flex-column gap-1 d-none">
-                                <h5 class="my-0">Dominic Keller</h5>
+                                <h5 class="my-0">{{ auth()->user()->name }}</h5>
                                 <h6 class="my-0 fw-normal">Founder</h6>
                             </span>
                         </a>
