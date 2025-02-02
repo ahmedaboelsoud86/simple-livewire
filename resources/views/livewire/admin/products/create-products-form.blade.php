@@ -22,59 +22,78 @@
 
                     <div class="tab-content">
                         <div id="input-types-preview">
-                           
-                                <form wire:submit.prevent="createProduct" autocomplete="off">
-                            <div class="row">
-                                <div class="col-lg-6">
 
-                                    <div class="mb-3">
-                                        <label for="category_id" class="form-label">Categories</label>
-                                        <select wire:model.defar="state.category_id" class="form-control" id="category_id">
-                                            <option value="">-- Select Category -- </option>
-                                            @foreach ($categories as $index => $value)
-                                                <option value="{{ $index }}">{{ $value }}</option>
-                                            @endforeach
-                                        </select>
-                                        @error('category_id') <span class="text-danger"> {{ $message }}</span> @enderror
+                            <form wire:submit.prevent="createProduct">
+                                <div class="row">
+                                    <div class="col-lg-6">
+
+                                        <div class="mb-3">
+                                            <label for="category_id" class="form-label">Categories</label>
+                                            <select wire:model.defar="category_id" class="form-control"
+                                                id="category_id">
+                                                <option value="">-- Select Category -- </option>
+                                                @foreach ($categories as $index => $value)
+                                                    <option value="{{ $index }}">{{ $value }}</option>
+                                                @endforeach
+                                            </select>
+                                            @error('category_id')
+                                                <span class="text-danger"> {{ $message }}</span>
+                                            @enderror
+                                        </div>
+                                        <div class="mb-3">
+                                            <label for="name" class="form-label">Name</label>
+                                            <input wire:model.defar="name" type="text" id="name"
+                                                class="form-control">
+                                            @error('name')
+                                                <span class="text-danger"> {{ $message }}</span>
+                                            @enderror
+                                        </div>
+
+
+
+
+
+                                    </div> <!-- end col -->
+
+                                    <div class="col-lg-6">
+                                        <div class="mb-3">
+                                            <label for="price" class="form-label">Price</label>
+                                            <input wire:model.defar="price" type="number" id="price"
+                                                class="form-control">
+                                            @error('price')
+                                                <span class="text-danger"> {{ $message }}</span>
+                                            @enderror
+                                        </div>
+                                        <div class="mb-3">
+                                            <label for="photo" class="form-label">photo</label>
+                                            <input wire:model="photo" type="file" id="photo"
+                                                class="form-control">
+                                            @error('photo')
+                                                <span class="text-danger"> {{ $message }}</span>
+                                            @enderror
+                                            <p>
+                                            <div wire:loading wire:target="photo">Uploading...</div>
+                                            </p>
+                                            <p>
+                                                @if ($photo)
+                                                    <img src="{{ $photo->temporaryUrl() }}" width="100">
+                                                @else
+                                                    <img src="{{ $state['avatar_url'] ?? '' }}"
+                                                        class="img d-block mb-2 w-100 rounded">
+                                                @endif
+
+                                            </p>
+                                        </div>
+                                    </div> <!-- end col -->
+                                </div> <!-- end row-->
+                                <div class="row">
+                                    <div class="col-lg-6">
+                                        <button id="submit" wire:loading.attr='disabled' wire:target="photo"
+                                            type="submit" class="btn btn-primary"><i class="fa fa-save mr-1"></i>
+                                            Save</button>
                                     </div>
-                                    <div class="mb-3">
-                                        <label for="name" class="form-label">Name</label>
-                                        <input wire:model.defar="state.name" type="text" id="name" class="form-control">
-                                        @error('name') <span class="text-danger"> {{ $message }}</span> @enderror
-                                    </div>
-
-
-
-
-
-                                </div> <!-- end col -->
-
-                                <div class="col-lg-6">
-
-
-                                    <div class="mb-3">
-                                        <label for="price" class="form-label">Price</label>
-                                        <input wire:model.defar="state.price" type="number" id="price" class="form-control">
-                                        @error('price') <span class="text-danger"> {{ $message }}</span> @enderror
-                                    </div>
-
-
-                                    <div class="mb-3">
-                                        <label for="photo" class="form-label">photo</label>
-                                        <input type="file" wire:model.defar="state.photo" id="photo" class="form-control">
-                                        @error('photo') <span class="text-danger"> {{ $message }}</span> @enderror
-                                    </div>
-
-
-
-                                </div> <!-- end col -->
-                            </div> <!-- end row-->
-                            <div class="row">
-                                <div class="col-lg-6">
-                                    <button id="submit" type="submit" class="btn btn-primary"><i class="fa fa-save mr-1"></i> Save</button>
                                 </div>
-                            </div>
-                            <!-- end row-->
+                                <!-- end row-->
                             </form>
 
 

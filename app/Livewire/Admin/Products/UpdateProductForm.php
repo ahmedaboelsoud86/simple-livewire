@@ -5,14 +5,21 @@ namespace App\Livewire\Admin\Products;
 use Livewire\Component;
 use Illuminate\Support\Facades\Validator;
 use App\Models\Category;
+use Livewire\WithFileUploads;
 use App\Models\Product;
+use Illuminate\Support\Facades\Storage;
 
 
 class UpdateProductForm extends Component
 {
+    use WithFileUploads;
     public $state = [];
 
+    public $photo;
+
     public $product;
+
+
     public function mount(Product $product)
     {
         $this->state = $product->toArray();
@@ -21,7 +28,7 @@ class UpdateProductForm extends Component
     }
     public function updateProduct()
     {
-        Validator::make(
+        $validatedData = Validator::make(
             $this->state,
             [
                 'category_id' => 'required',
@@ -30,15 +37,20 @@ class UpdateProductForm extends Component
             ],
             [
                 'category_id.required' => 'The Category Id field is required.',
-            ])->validate();
+            ]
+        )->validate();
 
-        $this->product->update($this->state);
+        if ($this->photo) {
+            Storage::disk('photos')->delete($this->product->photo);
+            $validatedData['photo'] = $this->photo->store('/', 'photos');
+        }
+        $this->product->update($validatedData);
 
         $this->dispatch('success', ['message' => 'Product updated successfully!']);
     }
     public function render()
     {
-        $categories = Category::pluck('name','id');
-        return view('livewire.admin.products.update-product-form',['categories'=>$categories]);
+        $categories = Category::pluck('name', 'id');
+        return view('livewire.admin.products.update-product-form', ['categories' => $categories]);
     }
 }

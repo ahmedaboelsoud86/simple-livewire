@@ -146,6 +146,7 @@
                                         <tr>
                                             <th>#</th>
                                             <th><input type="checkbox" wire:model.live="selectAll"></th>
+                                            <th>Photo</th>
                                             <th>Name</th>
                                             <th>Price</th>
                                             <th>Category</th>
@@ -158,6 +159,7 @@
                                                 <td>{{ $loop->iteration }}</td>
                                                 <td><input type="checkbox" value="{{ $item->id }}"
                                                         wire:model.live.defar="checkProduct"></td>
+                                                <td><img src="{{  Storage::disk('photos')->url($item->photo) }}" width="100"></td>
                                                 <td>{{ $item->name }}</td>
                                                 <td>{{ $item->price }}</td>
                                                 <td>{{ $item->category->name }}</td>

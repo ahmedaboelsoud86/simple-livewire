@@ -15,6 +15,18 @@ class Product extends Model
     {
         return $this->belongsTo(Category::class);
     }
+    // protected $appends = [
+    //     'photo_url',
+    // ];
+
+    // public function getPhotoUrlAttribute()
+    // {
+    //     if ($this->photo && Storage::disk('photos')->exists($this->photo)) {
+    //         return Storage::disk('photos')->url($this->photo);
+    //     }
+
+    //     return asset('noimage.png');
+    // }
 
 
 }

@@ -60,9 +60,26 @@
 
 
                                     <div class="mb-3">
+
+
                                         <label for="photo" class="form-label">photo</label>
-                                        <input type="file" wire:model.defar="state.photo" id="photo" class="form-control">
-                                        @error('photo') <span class="text-danger"> {{ $message }}</span> @enderror
+                                        <input wire:model="photo" type="file" id="photo"
+                                            class="form-control">
+                                        @error('photo')
+                                            <span class="text-danger"> {{ $message }}</span>
+                                        @enderror
+                                        <p>
+                                        <div wire:loading wire:target="photo">Uploading...</div>
+                                        </p>
+                                        <p>
+                                            @if ($photo)
+                                               <img src="{{ $photo->temporaryUrl() }}" width="100">
+                                            @else
+                                            <img src="{{ Storage::disk('photos')->url($state['photo']) }}"  width="100">
+
+                                            @endif
+
+                                        </p>
                                     </div>
 
 
@@ -71,7 +88,7 @@
                             </div> <!-- end row-->
                             <div class="row">
                                 <div class="col-lg-6">
-                                    <button id="submit" type="submit" class="btn btn-primary"><i class="fa fa-save mr-1"></i> Save</button>
+                                    <button id="submit"  wire:loading.attr='disabled' wire:target="photo" type="submit" class="btn btn-primary"><i class="fa fa-save mr-1"></i> Save</button>
                                 </div>
                             </div>
                             <!-- end row-->

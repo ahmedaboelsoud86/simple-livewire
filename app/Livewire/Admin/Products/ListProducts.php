@@ -19,6 +19,8 @@ class ListProducts extends Component
 
     public $categories = null;
 
+
+
     protected $listeners = ["deletedCheckedItems"];
 
     public function updatedSelectAll($value){
