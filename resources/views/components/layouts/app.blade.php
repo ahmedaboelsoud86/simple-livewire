@@ -28,6 +28,7 @@
     <link href="{{ asset('assets/vendor/toastr/toastr.min.css') }}" rel="stylesheet" type="text/css" />
 
 {{-- <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.14.8/dist/cdn.min.js"></script> --}}
+@stack('css')
 </head>
 
 <body>
@@ -528,44 +529,26 @@
                     <a href="pages-profile.html">
                         <img src="https://coderthemes.com/hyper/modern/assets/images/users/avatar-1.jpg"
                             alt="user-image" height="42" class="rounded-circle shadow-sm">
-                        <span class="leftbar-user-name mt-2">Dominic Keller</span>
+                        <span class="leftbar-user-name mt-2">{{ auth()->user()->name }}</span>
                     </a>
                 </div>
 
                 <!--- Sidemenu -->
                 <ul class="side-nav">
 
-                    <li class="side-nav-title">Navigation</li>
 
-                    <li class="side-nav-item">
-                        <a data-bs-toggle="collapse" href="#sidebarDashboards" aria-expanded="false"
-                            aria-controls="sidebarDashboards" class="side-nav-link">
-                            <i class="uil-home-alt"></i>
-                            <span class="badge bg-success float-end">5</span>
-                            <span> Dashboards </span>
-                        </a>
-                        <div class="collapse" id="sidebarDashboards">
-                            <ul class="side-nav-second-level">
-                                <li>
-                                    <a href="dashboard-analytics.html">Analytics</a>
-                                </li>
-                                <li>
-                                    <a href="index.html">Ecommerce</a>
-                                </li>
-                                <li>
-                                    <a href="dashboard-projects.html">Projects</a>
-                                </li>
-                                <li>
-                                    <a href="dashboard-crm.html">CRM</a>
-                                </li>
-                                <li>
-                                    <a href="dashboard-wallet.html">E-Wallet</a>
-                                </li>
-                            </ul>
-                        </div>
-                    </li>
+
+
 
                     <li class="side-nav-title">Apps</li>
+
+                    <li class="side-nav-item">
+                        <a href="{{ route('dashboard') }}"
+                            class="side-nav-link {{ request()->is('dashboard') ? 'active' : '' }}">
+                            <i class="uil-user"></i>
+                            <span> Dashboard </span>
+                        </a>
+                    </li>
 
                     <li class="side-nav-item">
                         <a href="{{ route('users') }}"

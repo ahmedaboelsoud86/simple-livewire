@@ -6,6 +6,7 @@ use App\Livewire\Admin\Products\ListProducts;
 use App\Livewire\Admin\Products\CreateProductsForm;
 use App\Livewire\Admin\Products\UpdateProductForm;
 use App\Livewire\Admin\Categories\ListCategories;
+use App\Livewire\Admin\Dashboard\MainPage;
 
 
 
@@ -36,6 +37,9 @@ Route::group(['middleware' => 'auth'],function () {
 
     // categories
     Route::get('categories', ListCategories::class)->name('categories');
+
+    // categories
+    Route::get('dashboard', MainPage::class)->name('dashboard');
 });
 // users
 
