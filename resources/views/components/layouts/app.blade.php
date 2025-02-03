@@ -571,6 +571,13 @@
                             <span> Products </span>
                         </a>
                     </li>
+                    <li class="side-nav-item">
+                        <a href="{{ route('profile') }}"
+                            class="side-nav-link {{ request()->is('profile') ? 'active' : '' }}">
+                            <i class="uil-user"></i>
+                            <span> Profile </span>
+                        </a>
+                    </li>
 
 
 

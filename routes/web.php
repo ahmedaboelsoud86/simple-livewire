@@ -7,6 +7,7 @@ use App\Livewire\Admin\Products\CreateProductsForm;
 use App\Livewire\Admin\Products\UpdateProductForm;
 use App\Livewire\Admin\Categories\ListCategories;
 use App\Livewire\Admin\Dashboard\MainPage;
+use App\Livewire\Admin\users\UserProfile;
 
 
 
@@ -40,6 +41,9 @@ Route::group(['middleware' => 'auth'],function () {
 
     // categories
     Route::get('dashboard', MainPage::class)->name('dashboard');
+
+
+    Route::get('profile', UserProfile::class)->name('profile');
 });
 // users
 
